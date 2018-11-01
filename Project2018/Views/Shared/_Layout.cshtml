@@ -1,0 +1,32 @@
+﻿@using System.Web.Optimization
+@{
+    <title>@ViewBag.Title</title>    
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>    
+    <link rel="stylesheet" href="~/Content/Background.css" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+    @Styles.Render("~/bundles/css")       
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            @Html.Partial("_Navbar")
+        </div>        
+        <div id="body">
+            @RenderBody()
+        </div>
+        <div id="footer">
+            @Html.Partial("_Footer")
+        </div> 
+    </div>                           
+    @Scripts.Render("~/bundles/scripts")
+    @RenderSection("scripts",false)    
+</body>
+</html>

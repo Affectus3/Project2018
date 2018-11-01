@@ -1,0 +1,69 @@
+﻿@model Project2018.ViewModels.PersonalFormViewModel
+@{
+    ViewBag.Title = "Personal Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<body>
+    <div class="container">
+        <h2>Personal Form</h2>
+        @Html.ValidationSummary()
+        <div id="message"></div>
+        @using (Ajax.BeginForm("Save", "Personal", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "message" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.Personal.Name)
+                @Html.TextBoxFor(m => m.Personal.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Personal.Name)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Personal.Surname)
+                @Html.TextBoxFor(m => m.Personal.Surname, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Personal.Surname)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Personal.DepartmentId)
+                @Html.DropDownListFor(m => m.Personal.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Choose a department", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Personal.DepartmentId)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Personal.Salary)
+                @Html.TextBoxFor(m => m.Personal.Salary, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Personal.Salary)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Personal.BirthDate)
+                @Html.TextBoxFor(m => m.Personal.BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", onchange = "CheckDateTypeIsValid(this)" })
+                @Html.ValidationMessageFor(m => m.Personal.BirthDate)
+            </div>
+            <div class="custom-radio">
+                <label>
+                    @Html.RadioButtonFor(m => m.Personal.Sex, true) Male
+                </label>
+            </div>
+            <div class="custom-radio">
+                <label>
+                    @Html.RadioButtonFor(m => m.Personal.Sex, false) Female
+                </label>
+                @Html.ValidationMessageFor(m => m.Personal.Sex)
+            </div>
+            <div class="custom-checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.Personal.IsMarried) Check if you are married
+                </label>
+            </div>
+            @Html.HiddenFor(m => m.Personal.Id)
+            <button type="submit" class="btn btn-success">Submit</button>
+        }
+    </div>
+</body>
+</html>
+
+
+@section scripts
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+

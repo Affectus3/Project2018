@@ -1,0 +1,48 @@
+﻿@model List<Project2018.Models.EntityFramework.Personal>
+@{
+    ViewBag.Title = "Personals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/TableCss.css" rel="stylesheet" />
+<html>
+<body>
+    <div class="container">
+        <h2>Personal List</h2>
+        @Html.ActionLink("New Personal", "New", null, new { @class = "btn btn-outline-success" })
+        <br /><br />
+        <table class="table table-light" id="tblPersonals">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                    <th>Birth Date</th>
+                    <th>Sex</th>
+                    <th>Civil Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var personal in Model)
+                {
+                    <tr>
+                        <td>@personal.Name</td>
+                        <td>@personal.Surname</td>
+                        <td>@personal.Department1.Name</td>
+                        <td>@personal.Salary</td>
+                        <td>@personal.BirthDate.Value.ToString("dd-MM-yyyy")</td>
+                        <td>@(personal.Sex == true ? "Male" : "Female")</td>
+                        <td>@(personal.IsMarried == true ? "Married" : "Single")</td>
+                        <td>@Html.ActionLink("Update", "Update", new { personal.Id }, new { @class = "btn btn-outline-primary" })</td>
+                        <td><a class="btn btn-outline-danger btnPersonalDelete" data-id="@personal.Id">Delete</a></td> @*Ajax*@
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

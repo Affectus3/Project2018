@@ -1,0 +1,32 @@
+﻿@model Project2018.Models.EntityFramework.Department1
+@{
+    ViewBag.Title = "Department Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<body>
+    <div class="container">
+        <div id="message"></div>
+        @using (Ajax.BeginForm("Save", "Department", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "message" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
+
+            </div>
+            @Html.HiddenFor(m => m.Id)
+            <button type="submit" class="btn btn-success">Save</button>
+        }
+    </div>
+</body>
+</html>
+
+
+@section scripts
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

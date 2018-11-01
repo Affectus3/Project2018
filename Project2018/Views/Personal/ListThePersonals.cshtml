@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Project2018.Models.EntityFramework.Personal>
+<h1>Personal List</h1>
+<table class="table table-light">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Birth Date</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personal in Model)
+        {
+            <tr>
+                <td>@personal.Name</td>
+                <td>@personal.Surname</td>
+                <td>@personal.BirthDate.Value.ToShortDateString()</td>
+                <td>@personal.Salary €</td>
+            </tr>
+        }        
+    </tbody>
+</table>

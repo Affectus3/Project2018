@@ -1,0 +1,45 @@
+﻿@using Project2018.Models.EntityFramework
+@model List<Department1>
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+<link href="~/Content/TableCss.css" rel="stylesheet" />
+<html>
+<body>
+    <div class="container">
+        <h2>Department List</h2>
+        @Html.ActionLink("Add New Department", "New", null, new { @class = "btn btn-outline-success" })
+        <br /><br />
+        <table class="table table-light" id="tblDepartments">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Personals</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var department in Model)
+                {
+                    <tr>
+                        <td>@department.Id</td>
+                        <td>@department.Name</td>
+                        <td>@Html.ActionLink("Update", "Update", new { department.Id }, new { @class = "btn btn-outline-primary" })</td>
+                        <td><a class="btn btn-outline-danger btnDepartmentDelete" data-id="@department.Id">Delete</a></td> @*Ajax*@
+
+                        <td>@Ajax.ActionLink("Show Personals", "ListThePersonals", "Personal", new { id = department.Id }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "personalList" }, new { @class = "btn btn-outline-secondary" })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div id="personalList"></div>
+    </div>
+</body>
+</html>
+
+
+
+

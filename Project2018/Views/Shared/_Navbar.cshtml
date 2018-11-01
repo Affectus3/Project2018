@@ -1,0 +1,27 @@
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-light"">
+    <div>
+        <a class="navbar-brand" href="/Home">Personal Management System</a>
+    </div>    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav"">
+        <ul class="navbar-nav">
+            @if (User.IsInRole("A") || User.IsInRole("U"))
+            {
+                <li class="nav-item active"><a class="nav-link" href="/Department">Departments</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Personal">Personals</a></li>
+                if (User.IsInRole("A"))
+                {
+                    <li class="nav-item"><a class="nav-link" href="/User">Users</a></li>
+                }
+                <li class="nav-item"><a class="nav-link" href="/Security/Logout">Log out</a></li>
+            }
+            else
+            {
+                <li class="nav-item"><a class="nav-link" href="/Security/Login">Log in</a></li>
+            }            
+                <li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact</a></li>                
+        </ul>
+    </div>
+</nav>
