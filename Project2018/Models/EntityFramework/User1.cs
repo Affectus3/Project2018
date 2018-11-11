@@ -14,11 +14,15 @@ namespace Project2018.Models.EntityFramework
     using System.ComponentModel.DataAnnotations;
 
     public partial class User1
-    {
+    {        
         public int Id { get; set; }
+        [Required(ErrorMessage = "User name is required")]
         [Display(Name="Username")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "User password is required")]
         public string Password { get; set; }
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Just Alphabet")]
+        [Required(ErrorMessage = "User role is required")]
         public string Role { get; set; }
     }
 }

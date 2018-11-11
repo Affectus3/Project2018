@@ -3,7 +3,6 @@
     ViewBag.Title = "Personals";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/TableCss.css" rel="stylesheet" />
 <html>
 <body>
     <div class="container">
@@ -35,9 +34,8 @@
                         <td>@personal.BirthDate.Value.ToString("dd-MM-yyyy")</td>
                         <td>@(personal.Sex == true ? "Male" : "Female")</td>
                         <td>@(personal.IsMarried == true ? "Married" : "Single")</td>
-                        <td>@Html.ActionLink("Update", "Update", new { personal.Id }, new { @class = "btn btn-outline-primary" })</td>
+                        <td>@Html.ActionLink("Update", "Update", new { personal.Id }, new { @class = "btn btn-outline-primary" })</td>                       
                         <td><a class="btn btn-outline-danger btnPersonalDelete" data-id="@personal.Id">Delete</a></td> @*Ajax*@
-
                     </tr>
                 }
             </tbody>

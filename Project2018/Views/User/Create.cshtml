@@ -1,9 +1,10 @@
 ﻿@model Project2018.Models.EntityFramework.User1
 
-@{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    @{
+        ViewBag.Title = "Create";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
 <html>
 <body>
     <div class="container">
@@ -48,11 +49,15 @@
                 </div>
             </div>
         }
-
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+            <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
     </div>
 </body>
 </html>
 
+@section scripts
+    {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

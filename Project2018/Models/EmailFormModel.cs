@@ -13,6 +13,7 @@ namespace MVCEmail.Models
         public string FromEmail { get; set; }
         [Required(ErrorMessage = "Message field has to be filled")]
         public string Message { get; set; }
+        [Display(Name = "Upload File")]
         public HttpPostedFileBase Upload { get; set; }
     }
 }
