@@ -44,12 +44,12 @@ namespace Project2018.Controllers
             if (personal.Id == 0)
             {
                 db.Personal.Add(personal);
-                modelMessage.Message = personal.Name + " " + personal.Surname + " added.    ";
+                modelMessage.Message = personal.Name + " " + personal.Surname + " added. Press to return ";
             }
             else
             {
                 db.Entry(personal).State = System.Data.Entity.EntityState.Modified;
-                modelMessage.Message = "Data of " + personal.Name + " " + personal.Surname + " updated.    ";
+                modelMessage.Message = "Data of " + personal.Name + " " + personal.Surname + " updated. Press to return ";
             }
             db.SaveChanges();
             modelMessage.Status = true;

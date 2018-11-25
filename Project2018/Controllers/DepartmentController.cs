@@ -37,7 +37,7 @@ namespace Project2018.Controllers
             if (department.Id == 0)
             {
                 db.Department1.Add(department);
-                model.Message = department.Name + " added.    ";
+                model.Message = department.Name + " added. Press to return ";
             }
             else
             {
@@ -45,7 +45,7 @@ namespace Project2018.Controllers
                 if (deparmentToUpdate == null)
                     return HttpNotFound();
                 deparmentToUpdate.Name = department.Name;
-                model.Message = department.Name + " updated.    ";
+                model.Message = department.Name + " updated. Press to return ";
             }
             db.SaveChanges();
             model.Status = true;

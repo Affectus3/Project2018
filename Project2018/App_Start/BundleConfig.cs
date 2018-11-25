@@ -21,11 +21,13 @@ namespace Project2018.App_Start
                 ));
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                 "~/Content/bootstrap.min.css",
-                "~/Content/site.css",
                 "~/Content/DataTables/css/dataTables.bootstrap4.min.css",
                 "~/Content/TableCss.css",
-                "~/Content/Background.css"
+                "~/Content/site.css"
                 ));
+            bundles.Add(new StyleBundle("~/bundles/css2").Include(             
+               "~/Content/Background.css"              
+               ));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             "~/Scripts/jquery.unobtrusive*",
             "~/Scripts/jquery.validate*"));
